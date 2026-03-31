@@ -85,7 +85,9 @@ export default function PortfolioSection() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <a
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -93,8 +95,10 @@ export default function PortfolioSection() {
                   >
                     <ExternalLink size={18} />
                     Live Demo
-                  </a>
-                  <a
+                  </motion.a>
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     href={project.codeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -102,7 +106,7 @@ export default function PortfolioSection() {
                   >
                     <Code2 size={18} />
                     View Code
-                  </a>
+                  </motion.a>
                 </div>
               </div>
             </motion.div>

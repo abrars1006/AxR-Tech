@@ -81,7 +81,9 @@ export default function PricingSection() {
                 ))}
               </ul>
 
-              <a
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 href="#contact"
                 className={`w-full py-3.5 rounded-xl text-center font-medium transition-all ${
                   plan.isPopular
@@ -90,7 +92,7 @@ export default function PricingSection() {
                 }`}
               >
                 Get Started
-              </a>
+              </motion.a>
             </motion.div>
           ))}
         </div>

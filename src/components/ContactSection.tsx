@@ -2,25 +2,46 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, Link, MessageCircle, Send } from "lucide-react";
+import { Mail, Phone, Link, MessageCircle, Send, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setIsSuccess(false);
+    setIsError(false);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_placeholder",
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_placeholder",
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          message: formData.message,
+          to_email: "smohamedabrar887@gmail.com",
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "public_placeholder"
+      );
+      
       setIsSuccess(true);
       setFormData({ name: "", email: "", message: "" });
-      
-      setTimeout(() => setIsSuccess(false), 5000);
-    }, 1500);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setIsError(true);
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setIsSuccess(false);
+        setIsError(false);
+      }, 5000);
+    }
   };
 
   return (
@@ -81,15 +102,17 @@ export default function ContactSection() {
             </a>
             
             <div className="pt-8 w-full border-t border-gray-100">
-              <a
-                href="https://wa.me/919361579953"
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://wa.me/919361579953?text=Hi,%20I%20saw%20your%20portfolio%20and%20I%E2%80%99m%20interested%20in%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full px-6 py-4 rounded-xl flex items-center justify-center gap-3 bg-white hover:bg-gray-50 border border-gray-200 text-gray-900 font-semibold transition-colors shadow-sm"
               >
                 <MessageCircle size={20} className="text-gray-900" />
                 Chat on WhatsApp
-              </a>
+              </motion.a>
             </div>
           </motion.div>
 
@@ -143,10 +166,14 @@ export default function ContactSection() {
                 />
               </div>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 rounded-xl font-semibold flex items-center justify-center gap-2 btn-primary shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
+                className={`w-full py-4 rounded-xl font-semibold flex items-center justify-center gap-2 shadow-md transition-all ${
+                  isSuccess ? "bg-emerald-500 text-white hover:bg-emerald-600" : isError ? "bg-red-500 text-white hover:bg-red-600" : "btn-primary"
+                } disabled:opacity-70 disabled:cursor-not-allowed`}
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
@@ -161,13 +188,18 @@ export default function ContactSection() {
                     <Send size={18} />
                     Message Sent Successfully!
                   </span>
+                ) : isError ? (
+                  <span className="flex items-center gap-2 text-white">
+                    <AlertCircle size={18} />
+                    Failed to send. Try again.
+                  </span>
                 ) : (
                   <span className="flex items-center gap-2">
                     <Send size={18} />
                     Send Message
                   </span>
                 )}
-              </button>
+              </motion.button>
             </form>
           </motion.div>
         </div>

@@ -38,23 +38,27 @@ export default function HeroSection() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6"
           >
-            <a
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               href="#portfolio"
               className="w-full sm:w-auto px-8 py-4 rounded-full btn-primary flex items-center justify-center gap-2 group"
             >
               View My Work
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-            </a>
+            </motion.a>
             
-            <a
-              href="https://wa.me/919361579953"
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="https://wa.me/919361579953?text=Hi,%20I%20saw%20your%20portfolio%20and%20I%E2%80%99m%20interested%20in%20your%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 rounded-full btn-secondary flex items-center justify-center gap-2"
             >
               <MessageCircle size={20} />
               Book a Call
-            </a>
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>
