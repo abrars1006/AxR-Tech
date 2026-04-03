@@ -73,7 +73,7 @@ export default function Navbar() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="https://wa.me/919361579953?text=Hi,%20I%20saw%20your%20portfolio%20and%20I%E2%80%99m%20interested%20in%20your%20services."
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeP0gWggpESObmrun9AnIqsykPZlfYhtQtMO2XfqmcOXnNIDA/viewform"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary px-6 py-2.5 rounded-full text-sm"
@@ -109,7 +109,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="https://wa.me/919361579953?text=Hi,%20I%20saw%20your%20portfolio%20and%20I%E2%80%99m%20interested%20in%20your%20services."
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeP0gWggpESObmrun9AnIqsykPZlfYhtQtMO2XfqmcOXnNIDA/viewform"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}

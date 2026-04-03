@@ -2,17 +2,19 @@
 
 import { motion } from "framer-motion";
 import { 
-  LineChart, 
-  Line, 
+  BarChart, 
+  Bar, 
   ResponsiveContainer, 
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
+  Cell
 } from "recharts";
 import { 
   Search, 
-  LineChart as LineChartIcon, 
-  Smartphone, 
+  Trophy, 
+  Users, 
+  Timer, 
   TrendingUp, 
   ShieldCheck, 
   Zap, 
@@ -21,34 +23,32 @@ import {
 } from "lucide-react";
 
 const chartData = [
-  { name: 'Jan', traffic: 300 },
-  { name: 'Feb', traffic: 450 },
-  { name: 'Mar', traffic: 650 },
-  { name: 'Apr', traffic: 900 },
-  { name: 'May', traffic: 1400 },
-  { name: 'Jun', traffic: 2200 },
+  { name: 'Perf.', score: 98 },
+  { name: 'Access.', score: 100 },
+  { name: 'Practices', score: 95 },
+  { name: 'SEO', score: 100 },
 ];
 
 const features = [
   {
-    icon: <Search size={24} className="text-gray-900" />,
-    title: "On-Page SEO",
-    description: "Ready to be found on Google"
+    icon: <Trophy size={24} className="text-gray-900" />,
+    title: "Projects Delivered",
+    description: "Successful launches for modern brands"
   },
   {
-    icon: <LineChartIcon size={24} className="text-gray-900" />,
-    title: "Tracking & Analytics",
-    description: "Track user behavior and performance"
-  },
-  {
-    icon: <Smartphone size={24} className="text-gray-900" />,
-    title: "100% Responsive",
-    description: "Optimized for all devices"
+    icon: <Users size={24} className="text-gray-900" />,
+    title: "Client Satisfaction",
+    description: "100% positive feedback & retention"
   },
   {
     icon: <TrendingUp size={24} className="text-gray-900" />,
-    title: "ROI-Focused",
-    description: "Built to generate real business results"
+    title: "Performance Improvements",
+    description: "Significantly boosted conversion rates"
+  },
+  {
+    icon: <Timer size={24} className="text-gray-900" />,
+    title: "Speed Optimization",
+    description: "Sub-second load times globally"
   }
 ];
 
@@ -83,38 +83,30 @@ export default function ResultsSection() {
           >
             <div className="mb-6 flex justify-between items-end">
               <div>
-                <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">Traffic Growth</p>
-                <p className="text-3xl font-bold text-gray-900">+428%</p>
+                <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">Average Lighthouse Score</p>
+                <p className="text-3xl font-bold text-gray-900">98/100</p>
               </div>
               <div className="px-3 py-1 bg-white rounded-full border border-gray-200 text-xs font-semibold text-emerald-600 shadow-sm">
-                Last 6 Months
+                Top Tier Performance
               </div>
             </div>
             
             <div className="w-full h-[250px] relative">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                  <defs>
-                    <linearGradient id="gradientLine" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stopColor="#9CA3AF" />
-                      <stop offset="100%" stopColor="#111827" />
-                    </linearGradient>
-                  </defs>
-                  <Line 
-                    type="monotone" 
-                    dataKey="traffic" 
-                    stroke="url(#gradientLine)" 
-                    strokeWidth={4} 
-                    dot={{ r: 5, fill: "#111827", strokeWidth: 2, stroke: "#fff" }}
-                    activeDot={{ r: 8, fill: "#111827", stroke: "#fff", strokeWidth: 2 }}
-                    animationDuration={2000}
-                    animationEasing="ease-in-out"
-                  />
+                <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#6B7280' }} dy={10} />
+                  <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#6B7280' }} domain={[0, 100]} />
                   <Tooltip 
+                    cursor={{ fill: 'rgba(0,0,0,0.05)' }}
                     contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                     itemStyle={{ color: '#111827', fontWeight: 600 }}
                   />
-                </LineChart>
+                  <Bar dataKey="score" radius={[6, 6, 0, 0]} animationDuration={1500}>
+                    {chartData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={index % 2 === 0 ? '#111827' : '#4B5563'} />
+                    ))}
+                  </Bar>
+                </BarChart>
               </ResponsiveContainer>
             </div>
           </motion.div>

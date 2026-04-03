@@ -1,32 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MonitorSmartphone, ShoppingCart, LayoutTemplate, Zap } from "lucide-react";
+import { MonitorSmartphone, Search, LayoutTemplate, Zap } from "lucide-react";
 
 export default function ServicesSection() {
   const services = [
     {
-      title: "Full Stack Web Development",
-      description: "Custom-built, scalable, and secure web applications tailored to your business needs.",
+      title: "Business Websites",
+      description: "Professional, high-converting websites designed to establish brand authority and attract premium clients.",
       icon: <MonitorSmartphone size={28} className="text-gray-900" />,
       delay: 0.1,
     },
     {
-      title: "E-commerce Development",
-      description: "High-converting online stores with seamless payment gateways and inventory management.",
-      icon: <ShoppingCart size={28} className="text-gray-900" />,
+      title: "Custom Web Applications",
+      description: "Tailored full-stack solutions built to streamline internal operations and scale with your business.",
+      icon: <LayoutTemplate size={28} className="text-gray-900" />,
       delay: 0.2,
     },
     {
-      title: "UI/UX Design",
-      description: "User-centric designs with modern aesthetics, ensuring an engaging and intuitive experience.",
-      icon: <LayoutTemplate size={28} className="text-gray-900" />,
+      title: "Performance Optimization",
+      description: "Lightning-fast load times and seamless user experiences that boost retention and improve search rankings.",
+      icon: <Zap size={28} className="text-gray-900" />,
       delay: 0.3,
     },
     {
-      title: "Website Optimization",
-      description: "Performance enhancements, SEO best practices, and fast load times to boost conversions.",
-      icon: <Zap size={28} className="text-gray-900" />,
+      title: "SEO-Ready Development",
+      description: "Built-in technical SEO best practices to ensure your business ranks higher and captures organic traffic.",
+      icon: <Search size={28} className="text-gray-900" />,
       delay: 0.4,
     },
   ];

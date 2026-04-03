@@ -9,20 +9,20 @@ export default function FaqSection() {
 
   const faqs = [
     {
-      question: "How long does a project take?",
-      answer: "A standard landing page timeline is typically 1-2 weeks. A perfect 3-page site may take 2-4 weeks depending on the required features, content, and rounds of revision.",
+      question: "What is the typical project timeline?",
+      answer: "For standard business websites, the timeline is around 2 to 4 weeks. For more complex, custom web applications, a project might take 4 to 8+ weeks depending on the specific features, integrations, and testing required.",
     },
     {
-      question: "What technologies do you use?",
-      answer: "I specialize in modern, high-performance web stacks like React, Next.js, Node.js, and Tailwind CSS. I prioritize clean, accessible code to ensure security and scalability.",
+      question: "How do we communicate during the project?",
+      answer: "I believe in transparent and regular communication. You will be kept in the loop through weekly progress updates, dedicated milestone reviews, and rapid response channels tailored to your preference.",
     },
     {
-      question: "Do you provide support after launch?",
-      answer: "Yes, all my projects include 30 days of free bug-fixing and fine-tuning. Afterwards, I offer affordable monthly maintenance retainers if you need ongoing updates and active site management.",
+      question: "Do you offer maintenance and support after launch?",
+      answer: "Absolutely. I provide ongoing maintenance and performance optimization retainers to ensure your site stays secure, up-to-date, and continues to deliver a top-tier user experience long term.",
     },
     {
-      question: "How do we start?",
-      answer: "Simply book a call or send me a message through the contact form below. We'll discuss your requirements, I'll provide a clear scope, and once accepted, we kick off the design and development phases.",
+      question: "How do you ensure my website performs well and scales?",
+      answer: "I follow strict technical SEO guidelines, utilize modern scalable frameworks like Next.js, and optimize all assets. My development process prioritizes clean code and robust architecture to handle growing traffic.",
     },
   ];
 

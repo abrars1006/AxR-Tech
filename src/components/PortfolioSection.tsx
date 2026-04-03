@@ -7,21 +7,12 @@ import Image from "next/image";
 export default function PortfolioSection() {
   const projects = [
     {
-      title: "AxR Threads - E-commerce",
-      description: "A full-scale fashion e-commerce application featuring product browsing, advanced filtering, user authentication, and a secure checkout process.",
-      techStack: ["React", "Next.js", "Tailwind CSS", "MongoDB"],
-      demoUrl: "#",
-      codeUrl: "https://github.com",
-      image: "/axr-threads-1.png",
-    },
-    {
-      title: "AxR Threads - Admin Dashboard",
-      description: "The admin dashboard for AxR Threads, handling order management, inventory tracking, sales analytics, and customer support interfaces.",
-      techStack: ["React", "TypeScript", "Chart.js", "Node.js"],
-      demoUrl: "#",
-      codeUrl: "https://github.com",
-      image: "/axr-threads-2.png",
-    },
+      title: "Diamond Construction",
+      description: "A premium, bespoke web application for a high-end commercial and residential construction company, emphasizing striking visuals and strong business conversions.",
+      techStack: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+      demoUrl: "https://diamond-construction.vercel.app",
+      image: "/diamond-construction.png",
+    }
   ];
 
   return (
@@ -52,7 +43,7 @@ export default function PortfolioSection() {
               className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-16 items-center`}
             >
               {/* Project Image */}
-              <div className="w-full md:w-1/2">
+              <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="w-full md:w-1/2 block">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden minimal-card group">
                   <Image 
                     src={project.image} 
@@ -61,11 +52,13 @@ export default function PortfolioSection() {
                     className="object-cover object-top transform group-hover:scale-[1.02] transition-transform duration-700"
                   />
                 </div>
-              </div>
+              </a>
 
               {/* Project Info */}
               <div className="w-full md:w-1/2 space-y-6">
-                <h3 className="text-3xl font-bold text-gray-900">{project.title}</h3>
+                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="inline-block hover:opacity-80 transition-opacity">
+                  <h3 className="text-3xl font-bold text-gray-900">{project.title}</h3>
+                </a>
                 
                 <div className="p-6 bg-white border border-gray-100 rounded-xl shadow-sm">
                   <p className="text-gray-600 leading-relaxed text-base">
@@ -94,18 +87,7 @@ export default function PortfolioSection() {
                     className="px-6 py-3 rounded-xl btn-primary flex items-center justify-center gap-2"
                   >
                     <ExternalLink size={18} />
-                    Live Demo
-                  </motion.a>
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    href={project.codeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-xl btn-secondary flex items-center justify-center gap-2"
-                  >
-                    <Code2 size={18} />
-                    View Code
+                    View Project
                   </motion.a>
                 </div>
               </div>
