@@ -12,6 +12,13 @@ export default function PortfolioSection() {
       techStack: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
       demoUrl: "https://diamond-construction.vercel.app",
       image: "/diamond-construction.png",
+    },
+    {
+      title: "RxT Studio",
+      description: "A modern portfolio and creative services website showcasing design and development expertise with smooth animations and interactive components.",
+      techStack: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+      demoUrl: "https://rxtstudio.vercel.app/",
+      image: "/images/rxtstudio.png",
     }
   ];
 
@@ -45,8 +52,8 @@ export default function PortfolioSection() {
               {/* Project Image */}
               <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="w-full md:w-1/2 block">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden minimal-card group">
-                  <Image 
-                    src={project.image} 
+                  <Image
+                    src={project.image}
                     alt={`${project.title} Preview`}
                     fill
                     className="object-cover object-top transform group-hover:scale-[1.02] transition-transform duration-700"
@@ -59,7 +66,7 @@ export default function PortfolioSection() {
                 <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="inline-block hover:opacity-80 transition-opacity">
                   <h3 className="text-3xl font-bold text-gray-900">{project.title}</h3>
                 </a>
-                
+
                 <div className="p-6 bg-white border border-gray-100 rounded-xl shadow-sm">
                   <p className="text-gray-600 leading-relaxed text-base">
                     {project.description}
@@ -68,8 +75,8 @@ export default function PortfolioSection() {
 
                 <div className="flex flex-wrap gap-2">
                   {project.techStack.map((tech, techIdx) => (
-                    <span 
-                      key={techIdx} 
+                    <span
+                      key={techIdx}
                       className="px-3 py-1 rounded-full bg-gray-100 text-gray-700 text-xs font-semibold uppercase tracking-wider border border-gray-200"
                     >
                       {tech}

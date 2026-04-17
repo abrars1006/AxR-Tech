@@ -7,14 +7,14 @@ export default function PricingSection() {
   const plans = [
     {
       name: "Landing Page",
-      price: "₹2,999/-",
+      price: "₹1,599/-",
       description: "Perfect for single page campaigns",
       features: ["Single beautiful landing page", "Responsive design", "SEO Optimized", "Contact Form Integration"],
       isPopular: false,
     },
     {
       name: "3 Pages Site",
-      price: "₹5,999/-",
+      price: "₹3,999/-",
       description: "Ideal for growing businesses",
       features: ["Up to 3 distinct pages", "Basic backend functionality", "CMS Integration", "Performance Optimized"],
       isPopular: true,
@@ -46,18 +46,17 @@ export default function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className={`relative flex flex-col p-8 rounded-2xl w-full md:w-[400px] transition-all duration-300 ${
-                plan.isPopular 
-                  ? "bg-white border-2 border-gray-900 shadow-xl scale-100 md:scale-105 z-10" 
+              className={`relative flex flex-col p-8 rounded-2xl w-full md:w-[400px] transition-all duration-300 ${plan.isPopular
+                  ? "bg-white border-2 border-gray-900 shadow-xl scale-100 md:scale-105 z-10"
                   : "bg-white border border-gray-200 shadow-sm"
-              }`}
+                }`}
             >
               {plan.isPopular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gray-900 text-white text-xs font-bold tracking-wide uppercase">
                   Most Popular
                 </div>
               )}
-              
+
               <div className="mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
                 <p className="text-gray-500 text-sm">{plan.description}</p>
@@ -85,11 +84,10 @@ export default function PricingSection() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 href="#contact"
-                className={`w-full py-3.5 rounded-xl text-center font-medium transition-all ${
-                  plan.isPopular
+                className={`w-full py-3.5 rounded-xl text-center font-medium transition-all ${plan.isPopular
                     ? "btn-primary shadow-md"
                     : "btn-secondary"
-                }`}
+                  }`}
               >
                 Get Started
               </motion.a>
