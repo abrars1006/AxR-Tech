@@ -46,7 +46,7 @@ export default function SkillsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="group p-8 border border-gray-100 bg-[#F9FAFB] rounded-2xl hover:bg-[#101828] transition-all duration-300 shadow-sm hover:shadow-xl hover:translate-y-[-4px]"
+              className="depth-card group p-8 border border-gray-100 bg-[#F9FAFB] rounded-2xl hover:bg-[#101828] transition-all duration-300 shadow-sm hover:shadow-xl hover:translate-y-[-4px]"
             >
               <div className="mb-4 text-[#101828] group-hover:text-white transition-colors duration-300">
                 <skill.icon size={32} />

@@ -48,7 +48,7 @@ export default function FaqSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm"
+              className="depth-card bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}

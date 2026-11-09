@@ -24,17 +24,15 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Pricing", href: "#pricing" },
     { name: "About", href: "#about" },
-    { name: "FAQ", href: "#faq" },
+    { name: "Services", href: "#services" },
+    { name: "Projects", href: "#portfolio" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm" : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/85 backdrop-blur-xl border-b border-white/10 shadow-2xl" : "bg-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,7 +42,7 @@ export default function Navbar() {
               href="#home"
               whileHover={{ scale: 1.02, opacity: 0.9 }}
               whileTap={{ scale: 0.98 }}
-              className="text-2xl font-bold tracking-wider text-[#1F2937] leading-none transition-all duration-300"
+              className="text-2xl font-bold tracking-wider text-white leading-none transition-all duration-300"
             >
               AxR Tech.
             </motion.a>
@@ -53,7 +51,7 @@ export default function Navbar() {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="h-[1px] w-full bg-gray-200 origin-left mt-1.5"
+              className="h-[1px] w-full bg-white/20 origin-left mt-1.5"
             />
           </div>
 
@@ -62,7 +60,7 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
+                className="text-white/65 hover:text-[#caff4a] transition-colors text-sm font-medium"
               >
                 {link.name}
               </a>
@@ -73,12 +71,10 @@ export default function Navbar() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeP0gWggpESObmrun9AnIqsykPZlfYhtQtMO2XfqmcOXnNIDA/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               className="btn-primary px-6 py-2.5 rounded-full text-sm"
             >
-              Book a Call
+              Let&apos;s Connect
             </motion.a>
           </div>
 
@@ -86,7 +82,7 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-900 focus:outline-none"
+              className="text-white focus:outline-none"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -96,22 +92,20 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 shadow-xl">
+        <div className="md:hidden absolute top-20 left-0 w-full bg-[#080909] border-b border-white/10 shadow-xl">
           <div className="px-4 pt-2 pb-6 space-y-1 sm:px-3 flex flex-col pt-4">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block px-3 py-4 text-base font-medium text-gray-700 hover:text-gray-900 border-b border-gray-50"
+                className="block px-3 py-4 text-base font-medium text-white/75 hover:text-[#caff4a] border-b border-white/5"
               >
                 {link.name}
               </a>
             ))}
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeP0gWggpESObmrun9AnIqsykPZlfYhtQtMO2XfqmcOXnNIDA/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               onClick={() => setIsOpen(false)}
               className="mt-6 block text-center btn-primary px-6 py-3 rounded-full font-medium"
             >
@@ -123,7 +117,7 @@ export default function Navbar() {
 
       {/* Scroll Progress Bar */}
       <motion.div
-        className="h-[2px] bg-gray-900 origin-left"
+        className="h-[2px] bg-[#caff4a] origin-left"
         style={{ scaleX }}
       />
     </nav>

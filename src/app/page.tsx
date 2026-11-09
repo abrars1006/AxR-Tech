@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
+import SkillsSection from "@/components/SkillsSection";
 import ResultsSection from "@/components/ResultsSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import PricingSection from "@/components/PricingSection";
@@ -18,7 +19,7 @@ export default function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="relative bg-white text-gray-900"
+      className="relative bg-[#060707] text-white"
     >
       <Navbar />
       <HeroSection />
@@ -26,6 +27,7 @@ export default function Home() {
         <AboutSection />
       </div>
       <ServicesSection />
+      <SkillsSection />
       <div className="bg-gray-50 border-y border-gray-200">
         <ResultsSection />
       </div>

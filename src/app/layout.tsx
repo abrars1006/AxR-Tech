@@ -5,13 +5,13 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AxR Tech | Mohamed Abrar S - Full-Stack Developer",
-  description: "Freelance full-stack developer and designer based in India. Specialized in high-performance websites, e-commerce solutions, and custom web applications for modern brands.",
+  title: "AxR Tech | Building Digital Experiences",
+  description: "Modern web solutions. Powerful ideas. AxR Tech builds polished digital experiences for modern brands.",
   keywords: ["Freelance Web Developer", "Next.js Expert", "Full Stack Developer India", "UI/UX Designer", "AxR Tech"],
   openGraph: {
-    title: "AxR Tech | Premium Web Solutions",
-    description: "I build high-converting websites for modern brands. Delivering excellence through code and design.",
-    url: "https://axr-tech.vercel.app", // Placeholder for actual URL
+    title: "AxR Tech | Building Digital Experiences",
+    description: "Modern Web Solutions. Powerful Ideas.",
+    url: "https://axrtech.vercel.app",
     siteName: "AxR Tech",
     type: "website",
   },

@@ -1,99 +1,131 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, MessageCircle, Code2, Bot, Braces, Binary } from "lucide-react";
+import { ArrowUpRight, Volume2, VolumeX } from "lucide-react";
 
 export default function HeroSection() {
-  return (
-    <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center min-h-screen bg-gray-50/50 overflow-hidden">
-      {/* Animated Background Icons */}
-      <div className="absolute inset-0 z-0 opacity-5 pointer-events-none text-gray-900 overflow-hidden">
-        <motion.div
-          animate={{ y: [0, -20, 0], x: [0, 10, 0], rotate: [0, 5, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[15%] left-[10%]"
-        >
-          <Code2 size={64} />
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, 20, 0], x: [0, -10, 0], rotate: [0, -5, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute top-[20%] right-[15%]"
-        >
-          <Bot size={72} /> {/* ChatGPT icon representation */}
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, 15, 0], x: [0, 15, 0], rotate: [0, 10, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-[25%] left-[20%]"
-        >
-          <Braces size={56} /> {/* JS/Syntax representation */}
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, -15, 0], x: [0, -15, 0], rotate: [0, -10, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          className="absolute bottom-[30%] right-[25%]"
-        >
-          <Binary size={80} /> {/* React/Tech representation */}
-        </motion.div>
-      </div>
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full">
+  const playWelcome = () => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    const greeting = new SpeechSynthesisUtterance(
+      "Assalamu alaikum. Welcome to AxR Tech. Let's build something powerful together.",
+    );
+    greeting.lang = "en-IN";
+    greeting.rate = 0.92;
+    greeting.pitch = 0.94;
+    greeting.onend = () => setIsSpeaking(false);
+    greeting.onerror = () => setIsSpeaking(false);
+    setIsSpeaking(true);
+    window.speechSynthesis.speak(greeting);
+  };
+
+  return (
+    <section id="home" className="hero-scene relative isolate overflow-hidden">
+      <div className="hero-grid absolute inset-0" aria-hidden="true" />
+      <div className="hero-glow hero-glow-one" aria-hidden="true" />
+      <div className="hero-glow hero-glow-two" aria-hidden="true" />
+
+      <div className="hero-layout relative z-10 mx-auto grid min-h-[790px] max-w-[1440px] items-center gap-8 px-6 pb-32 pt-36 sm:px-10 lg:grid-cols-[1.02fr_.98fr] lg:px-16">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          className="hero-copy relative z-20 max-w-[680px]"
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto"
+          transition={{ duration: 0.75, ease: "easeOut" }}
         >
+          <div className="hero-eyebrow mb-8 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em]">
+            <span className="status-dot" />
+            <span>Full-stack web developer · Digital designer</span>
+          </div>
+
+          <p className="mb-5 text-xs font-medium uppercase tracking-[0.3em] text-white/55">AxR Tech presents</p>
+          <h1 className="hero-title mb-7 font-black uppercase leading-[.91] tracking-[-.055em]">
+            <span>Building</span>
+            <span>Digital</span>
+            <span className="hero-title-accent">Experiences.</span>
+          </h1>
+          <p className="mb-9 max-w-lg text-lg leading-relaxed text-white/65 sm:text-xl">
+            Modern Web Solutions. Powerful Ideas.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-4">
+            <motion.a
+              href="#portfolio"
+              whileHover={{ y: -3, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="hero-cta-primary inline-flex items-center gap-4 rounded-xl px-6 py-4 text-sm font-bold uppercase tracking-[0.12em]"
+            >
+              Explore projects <ArrowUpRight size={19} />
+            </motion.a>
+            <button
+              type="button"
+              onClick={playWelcome}
+              aria-label={isSpeaking ? "Stop welcome voice" : "Play welcome voice"}
+              aria-pressed={isSpeaking}
+              className="voice-control inline-flex h-[54px] w-[54px] items-center justify-center rounded-full border border-white/20 bg-white/[0.035] text-[#caff4a] transition hover:border-[#caff4a]/70 hover:bg-[#caff4a]/10"
+            >
+              {isSpeaking ? <VolumeX size={20} /> : <Volume2 size={20} />}
+            </button>
+            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/45">Hear the welcome</span>
+          </div>
+        </motion.div>
+
+        <div className="hero-art relative mx-auto h-[500px] w-full max-w-[650px] sm:h-[610px] lg:h-[680px]">
+          <div className="orbit orbit-one" aria-hidden="true" />
+          <div className="orbit orbit-two" aria-hidden="true" />
+          <div className="orbit orbit-three" aria-hidden="true" />
+          <div className="orbit-core" aria-hidden="true"><span /></div>
+
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-white shadow-sm mb-8"
+            className="portrait-stage absolute inset-x-[11%] bottom-0 top-[7%]"
+            initial={{ opacity: 0, y: 28, rotateY: -8 }}
+            animate={{ opacity: 1, y: 0, rotateY: 0 }}
+            transition={{ duration: 1, delay: 0.12, ease: "easeOut" }}
           >
-            <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-sm font-medium text-gray-600">Available for freelance work</span>
+            <Image
+              src="/abrar-profile.jpg"
+              alt="Mohamed Abrar, founder of AxR Tech"
+              fill
+              priority
+              sizes="(max-width: 1024px) 80vw, 46vw"
+              className="hero-portrait object-cover"
+            />
+            <div className="portrait-shade" aria-hidden="true" />
+            <div className="portrait-caption">
+              <span className="status-dot" />
+              <span>Mohamed Abrar <i>/</i> Founder</span>
+            </div>
           </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 text-gray-900 leading-[1.1]">
-              Elevating brands with
-              <span className="block mt-2 text-gray-400">custom web solutions.</span>
-            </h1>
-            
-            <p className="mt-6 text-xl md:text-2xl text-gray-500 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-              Professional, confident, and focused on building modern business websites that outpace the competition.
-            </p>
-  
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 relative z-10"
-            >
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="#portfolio"
-                className="w-full sm:w-auto px-8 py-4 rounded-full btn-primary flex items-center justify-center gap-2 group"
-              >
-                View My Work
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-              </motion.a>
-              
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="https://docs.google.com/forms/d/e/1FAIpQLSeP0gWggpESObmrun9AnIqsykPZlfYhtQtMO2XfqmcOXnNIDA/viewform"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-4 rounded-full btn-secondary flex items-center justify-center gap-2 bg-white/80 backdrop-blur-sm"
-              >
-                <MessageCircle size={20} />
-                Book a Call
-              </motion.a>
-            </motion.div>
+          <motion.div className="floating-skill skill-left" animate={{ y: [0, -8, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
+            <span className="skill-symbol">&lt;/&gt;</span><span><b>Web</b><small>Design</small></span>
+          </motion.div>
+          <motion.div className="floating-skill skill-right" animate={{ y: [0, 9, 0] }} transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}>
+            <span className="skill-symbol">{"{ }"}</span><span><b>Full stack</b><small>Developer</small></span>
+          </motion.div>
+          <motion.div className="floating-skill skill-bottom" animate={{ y: [0, -7, 0] }} transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}>
+            <span className="skill-symbol">✦</span><span><b>Performance</b><small>First</small></span>
           </motion.div>
         </div>
-      </section>
+
+        <div className="hero-proof absolute bottom-7 left-6 right-6 z-20 grid grid-cols-2 overflow-hidden rounded-2xl sm:left-10 sm:right-10 lg:left-16 lg:right-16 lg:grid-cols-4">
+          <div className="proof-item"><b>02</b><span>Featured projects</span></div>
+          <div className="proof-item"><b>Web</b><span>Development</span></div>
+          <div className="proof-item"><b>UI/UX</b><span>Design</span></div>
+          <div className="proof-item"><b>100%</b><span>Commitment</span></div>
+        </div>
+      </div>
+
+      <div className="hero-scroll-hint" aria-hidden="true"><span className="scroll-mouse"><i /></span><span>Scroll to explore</span></div>
+    </section>
   );
 }

@@ -46,7 +46,7 @@ export default function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className={`relative flex flex-col p-8 rounded-2xl w-full md:w-[400px] transition-all duration-300 ${plan.isPopular
+              className={`depth-card relative flex flex-col p-8 rounded-2xl w-full md:w-[400px] transition-all duration-300 ${plan.isPopular
                   ? "bg-white border-2 border-gray-900 shadow-xl scale-100 md:scale-105 z-10"
                   : "bg-white border border-gray-200 shadow-sm"
                 }`}

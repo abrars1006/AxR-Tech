@@ -77,7 +77,7 @@ export default function AboutSection() {
               
               <motion.div 
                 whileHover={{ y: -4 }}
-                className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 transition-all cursor-default"
+                className="depth-card flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 transition-all cursor-default"
               >
                 <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 border border-gray-100">
                   <Award className="text-emerald-600" size={20} />
@@ -89,7 +89,7 @@ export default function AboutSection() {
 
               <motion.div 
                 whileHover={{ y: -4 }}
-                className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 transition-all cursor-default"
+                className="depth-card flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 transition-all cursor-default"
               >
                 <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 border border-gray-100">
                   <Calendar className="text-blue-600" size={20} />
@@ -101,7 +101,7 @@ export default function AboutSection() {
 
               <motion.div 
                 whileHover={{ y: -4 }}
-                className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 transition-all cursor-default sm:col-span-2"
+                className="depth-card flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 transition-all cursor-default sm:col-span-2"
               >
                 <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 border border-gray-100">
                   <Briefcase className="text-gray-900" size={20} />
